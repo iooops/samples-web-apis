@@ -1,0 +1,12 @@
+{
+  "name": "Web-API-Samples",
+  "version": "0.1.0",
+  "description": "Sample",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "js-beautify": "^1.5.10",
+    "layer-patch": "layerhq/layer-patch"
+  },
+  "devDependencies": {}
+}

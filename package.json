@@ -6,7 +6,8 @@
   "license": "ISC",
   "dependencies": {
     "js-beautify": "^1.5.10",
-    "layer-patch": "layerhq/layer-patch"
+    "layer-patch": "layerhq/layer-patch",
+    "request": "^2.58.0"
   },
   "devDependencies": {}
 }

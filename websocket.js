@@ -24,14 +24,6 @@
     var layersample = window.layer.sampledata;
     var serverUrl = layersample.config.serverUrl.replace(/^https/, "wss");
 
-    function log(message) {
-        var d = new Date();
-        var node = document.createElement("pre");
-        node.innerHTML = d.toLocaleTimeString() + ": " +  message;
-        document.body.appendChild(node);
-    }
-
-
     // Cache of all objects received via the websocket
     var objectCache = {};
 

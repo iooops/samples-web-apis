@@ -57,3 +57,28 @@ Once everything is setup, you can run
 ```
 
 The platform.js script provides some basic functions for accessing the platform api, and calls them in sequence.
+
+## Typing Indicators
+
+To run the Typing Indicators demo, load typing_indicators.html, which will load typing_indicators.js.
+
+Part 1: This demo will establish a websocket, and send typing indicators as you type.
+
+Part 2: This demo will establish a second websocket connection and handle typing indicators as they are received.
+
+Notes on working with typing indicators:
+
+The sender is expected to use the following behavior:
+
+1. Send a "start" event whenever the input field goes from empty to having text
+2. Send a "start" event every 2.5 seconds for as long as there is text in the box, and 2.5 seconds have passed where keyboard events are being received.
+3. Send a "pause" event for any 2.5 second stretch in which no keyboard events are received (but there is text in the box)
+4. Send an "end" event any time the text box transitions from having text to not having text.
+
+The recipient is expected to use the following behavior:
+
+1. Display a typing indicator such as "frodo is typing that tech savy hobbit" on receiving a start event
+2. On going 6 seconds without receiving any other events, automatically set the typing indicator state to "end" and remove any displayed indicators.
+3. On receiving a "pause" event, Update the displayed indicator, such as "frodo can't find his keyboard"
+4. On receiving an "end" event, remove any displayed indicator
+

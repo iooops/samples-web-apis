@@ -63,21 +63,30 @@
 
     function onMessage(evt) {
         var msg = JSON.parse(evt.data);
-        try {
-            switch(msg.type + "." + msg.operation) {
+        log("WEBSOCKET RECEIVED: " + js_beautify(JSON.stringify(msg)));
+        switch(msg.type) {
+            case "change":
+                handleChange(msg);
+                break;
+        }
+    }
 
+    function handleChange(msg) {
+        var body = msg.body;
+        try {
+            switch (body.operation) {
                 // On receiving a create event, notify the app
                 // of the new object, and cache the object
-                case "change.create":
-                    objectCache[msg.object.id] = msg.data;
-                    log("WEBSOCKET CREATE: " + msg.object.id);
+                case "create":
+                    objectCache[body.object.id] = body.data;
+                    log("WEBSOCKET CREATED: " + body.object.id);
                     break;
 
                 // On receiving a delete event, notify the app of
                 // the removed object, and remove it from cache
-                case "change.delete":
-                    delete objectCache[msg.object.id];
-                    log("WEBSOCKET DELETE: " + msg.object.id);
+                case "delete":
+                    delete objectCache[body.object.id];
+                    log("WEBSOCKET DELETED: " + body.object.id);
                     break;
 
                 // On receiving a patch event, let the parser handle it.
@@ -85,14 +94,13 @@
                 // the operations to the parser.
                 // The changeCallbacks handler will notify the app
                 // of any changes.
-                case "change.patch":
-                    var objectToChange = objectCache[msg.object.id];
+                case "patch":
+                    var objectToChange = objectCache[body.object.id];
                     if (objectToChange) {
-                        log("WEBSOCKET PATCH: " + msg.object.id + ": " + js_beautify(JSON.stringify(msg.data)));
                         parser.parse({
                             object: objectToChange,
-                            type: msg.object.type,
-                            operations: msg.data
+                            type: body.object.type,
+                            operations: body.data
                         });
                     }
                     break;

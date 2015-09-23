@@ -35,9 +35,6 @@
     // Cache of all objects received via the websocket
     var objectCache = {};
 
-    // Global for demonstration/debugging
-    var currentMessage;
-
     var parser = new layer.js.LayerPatchParser({
         getObjectCallback: function(id) {
             return objectCache[id]
@@ -46,14 +43,14 @@
             Message: {
                 all: function(object, newValue, oldValue, paths) {
                     var prop = paths[0].replace(/^([^\.]*).*$/, "$1");
-                    newValue = typeof newValue != "object" ? newValue : js_beautify(JSON.stringify(newValue));
+                    newValue = typeof newValue != "object" ? newValue : JSON.stringify(newValue, false, 4);
                     log("WEBSOCKET PATCH RESULT: " + prop + " = " + newValue);
                 }
             },
             Conversation: {
                 all: function(object, newValue, oldValue, paths) {
                     var prop = paths[0].replace(/^([^\.]*).*$/, "$1");
-                    newValue = typeof newValue != "object" ? newValue : js_beautify(JSON.stringify(newValue));
+                    newValue = typeof newValue != "object" ? newValue : JSON.stringify(newValue, false, 4);
                     log("WEBSOCKET PATCH RESULT: " + prop + " = " + newValue);
                 }
             }
@@ -63,30 +60,30 @@
 
     function onMessage(evt) {
         var msg = JSON.parse(evt.data);
-        log("WEBSOCKET RECEIVED: " + js_beautify(JSON.stringify(msg)));
+        var body = msg.body;
+	log("WEBSOCKET RECEIVED: " + JSON.stringify(msg, false, 4));
         switch(msg.type) {
             case "change":
-                handleChange(msg);
+                handleChange(body);
                 break;
         }
     }
 
     function handleChange(msg) {
-        var body = msg.body;
         try {
-            switch (body.operation) {
+            switch(msg.operation) {
                 // On receiving a create event, notify the app
                 // of the new object, and cache the object
                 case "create":
-                    objectCache[body.object.id] = body.data;
-                    log("WEBSOCKET CREATED: " + body.object.id);
+                    objectCache[msg.object.id] = msg.data;
+                    log("WEBSOCKET CREATE: " + msg.object.id);
                     break;
 
                 // On receiving a delete event, notify the app of
                 // the removed object, and remove it from cache
                 case "delete":
-                    delete objectCache[body.object.id];
-                    log("WEBSOCKET DELETED: " + body.object.id);
+                    delete objectCache[msg.object.id];
+                    log("WEBSOCKET DELETE: " + msg.object.id);
                     break;
 
                 // On receiving a patch event, let the parser handle it.
@@ -95,12 +92,13 @@
                 // The changeCallbacks handler will notify the app
                 // of any changes.
                 case "patch":
-                    var objectToChange = objectCache[body.object.id];
+                    var objectToChange = objectCache[msg.object.id];
                     if (objectToChange) {
+                        log("WEBSOCKET PATCH: " + msg.object.id + ": " + JSON.stringify(msg.data, false, 4));
                         parser.parse({
                             object: objectToChange,
-                            type: body.object.type,
-                            operations: body.data
+                            type: msg.object.type,
+                            operations: msg.data
                         });
                     }
                     break;
@@ -108,8 +106,6 @@
         } catch(e) {
             console.error("layer-patch Error: " + e);
         }
-
-
     }
 
 

@@ -6,7 +6,7 @@
  */
 (function() {
     if (!window.appId) {
-        throw new Error("Please provide an App ID from your developer dashboard");
+        return alert("Please provide an App ID from your developer dashboard; this goes in config.js");
     }
 
     if (!window.layer) window.layer = {};
@@ -30,8 +30,7 @@
         }
     };
 
-    // Part 1: Setup sending of typing indicators
-    // Part 1a: Create a Websocket for sending typing indicators
+    // AUTHENTICATE
     getNonce()
 
     // Use the nonce to get an identity token
@@ -51,24 +50,33 @@
                 'Layer session-token="' + sessionToken + '"';
         return createConversation(["a", "b"], true)
     })
+
+    // OK, we finally have authenticated, we have a Conversation
+    // we can now start our typing indicator demo
     .then(function(conversation) {
-        console.log("STARTING ON " + conversation.id);
+        // Step 1: Create a websocket
         sampledata.cache.sendSocket = new WebSocket( websocketUrl + "/websocket?session_token=" + sampledata.cache.token,
                                     "com.layer.notifications-1.0");
 
-        // Part 1b: Setup The typingListener
+        // Step 2: Setup The typingListener which will monitor
+        // our text editor and send typing indicators over the websocket
         var typingListener = new layer.TypingListener({
             input: document.getElementById("textbox"),
             websocket: sampledata.cache.sendSocket,
             conversation: conversation
         });
 
+        // Nasty hack to let us log all messages sent over the websocket
+        // so that people who run this demo can see whats being sent.
         var send = typingListener.publisher.send;
         typingListener.publisher.send = function(msg) {
             log(msg, document.getElementById("sentLog"));
             send.apply(typingListener.publisher, [msg]);
         }
 
+        // Step 3: Setup a TypingIndicatorListener which monitors the
+        // websocket for typing indicator events that relate to this
+        // conversation
         var typingIndicatorListener = new layer.TypingIndicatorListener({
             conversation: conversation,
             websocket: sampledata.cache.sendSocket,

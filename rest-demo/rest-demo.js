@@ -6,7 +6,7 @@
  */
 (function() {
     if (!window.appId) {
-        throw new Error("Please provide an App ID from your developer dashboard");
+        return alert("Please provide an App ID from your developer dashboard; this goes in config.js");
     }
 
     if (!window.layer) window.layer = {};

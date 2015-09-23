@@ -20,17 +20,17 @@ To run the REST API Demo, you need to edit your config.js file to have your app-
 
 You should use the app-id for the sample app generated for you in the Developer Dashboard; this is setup with an identity provider that the script will automatically access.
 
-To run the REST API Demo, simply load rest.html in your browser.
+To run the REST API Demo, simply load rest-demo/index.html in your browser.
 
-The rest-library.js file contains a library of functions for accessing the REST API.
+The ~/rest-library.js file contains a library of functions for accessing the REST API.
 
-The rest-demo.js file a script of calls for invoking those rest-library.js's functions.
+The ~/rest-demo/rest-demo.js file a script of calls for invoking those rest-library.js's functions.
 
 ## The Websocket API Demo
 
 To run the Websocket API Demo, you need to be able to run the REST API Demo.
 
-Simply load websocket.html to run the demo; the demo will run the REST API Demo and show all websocket events generated.  If you run this in chrome, you can see more details on the websocket events:
+Simply load websocket-demo/websocket-demo.html to run the demo; the demo will run the REST API Demo and show all websocket events generated.  If you run this in chrome, you can see more details on the websocket events:
 
 1. Open the Javascript debugger in chrome
 2. Go to the Network tab
@@ -46,7 +46,7 @@ The Typing Indicator Demo comes with some libraries you are welcome to reuse, in
 2. TypingListener: Monitors a textbox you provide, and tells the TypingPublisher what the current state is
 3. TypingIndicatorListener: Monitors the websocket for typing indicators from other users, and fires onChange events whenever a typing indicator updates its state
 
-These can be found in the `typing_indicator` folder, and the typing-indicator.js shows an example of how to use them.
+These can be found in the `typing-indicator-demo/typing_indicators` folder, and the typing-indicator-demo.js shows an example of how to use them.
 
 To run the Typing Indicator Demo, you need to edit your config.js file to have your app-id.
 
@@ -54,7 +54,7 @@ You should use the app-id for the sample app generated for you in the Developer 
 
 To run the Typing Indicator Demo, simply load typing-indicator.html in your browser.
 
-The typing_indicator.js file runs this demo.
+Open typing-indicator-demo/index.html to run this test; you can test this in two browsers or tabs; one can log in as user "a" and the other as user "b" so you can see what both the sender and receiver of typing indicators will see.
 
 ## The Platform API Demo
 

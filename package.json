@@ -6,7 +6,6 @@
   "license": "ISC",
   "dependencies": {
     "deferred": "^0.7.2",
-    "js-beautify": "^1.5.10",
     "layer-patch": "layerhq/layer-patch",
     "request": "^2.58.0"
   },

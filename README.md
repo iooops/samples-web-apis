@@ -14,11 +14,11 @@ to get started, execute the following commands:
 2. cd samples-web-apis
 3. npm install   (it is sometimes necessary to prefix this with `sudo`)
 
+To run the demos below, you should edit your `config.js` file to have  your `appId`.
+
+You should use the Application ID for the sample app generated for you in the Developer Dashboard; this is setup with an identity provider that the script will automatically access.
+
 ## The REST API Demo
-
-To run the REST API Demo, you need to edit your config.js file to have your app-id.
-
-You should use the app-id for the sample app generated for you in the Developer Dashboard; this is setup with an identity provider that the script will automatically access.
 
 To run the REST API Demo, simply load rest-demo/index.html in your browser.
 
@@ -49,10 +49,6 @@ The Typing Indicator Demo comes with some libraries you are welcome to reuse, in
 3. TypingIndicatorListener: Monitors the websocket for typing indicators from other users, and fires onChange events whenever a typing indicator updates its state
 
 These can be found in the `typing-indicator-demo/typing_indicators` folder, and the demo.js shows an example of how to use them.
-
-To run the Typing Indicator Demo, you need to edit your config.js file to have your app-id.
-
-You should use the app-id for the sample app generated for you in the Developer Dashboard; this is setup with an identity provider that the script will automatically access.
 
 To run the Typing Indicator Demo, simply load typing-indicator.html in your browser.
 

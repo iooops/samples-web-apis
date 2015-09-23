@@ -61,6 +61,7 @@
     function onMessage(evt) {
         var msg = JSON.parse(evt.data);
         var body = msg.body;
+	log("WEBSOCKET RECEIVED: " + JSON.stringify(msg, false, 4));
         switch(msg.type) {
             case "change":
                 handleChange(body);

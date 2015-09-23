@@ -24,13 +24,15 @@ To run the REST API Demo, simply load rest-demo/index.html in your browser.
 
 The ~/rest-library.js file contains a library of functions for accessing the REST API.
 
-The ~/rest-demo/rest-demo.js file a script of calls for invoking those rest-library.js's functions.
+The ~/rest-demo/demo.js file a script of calls for invoking those rest-library.js's functions.
+
+This demo is meant to be understood by running it with your debugger open and showing your network traffic.
 
 ## The Websocket API Demo
 
 To run the Websocket API Demo, you need to be able to run the REST API Demo.
 
-Simply load websocket-demo/websocket-demo.html to run the demo; the demo will run the REST API Demo and show all websocket events generated.  If you run this in chrome, you can see more details on the websocket events:
+Simply load websocket-demo/demo.html to run the demo; the demo will run the REST API Demo and show all websocket events generated.  If you run this in chrome, you can see more details on the websocket events:
 
 1. Open the Javascript debugger in chrome
 2. Go to the Network tab
@@ -46,7 +48,7 @@ The Typing Indicator Demo comes with some libraries you are welcome to reuse, in
 2. TypingListener: Monitors a textbox you provide, and tells the TypingPublisher what the current state is
 3. TypingIndicatorListener: Monitors the websocket for typing indicators from other users, and fires onChange events whenever a typing indicator updates its state
 
-These can be found in the `typing-indicator-demo/typing_indicators` folder, and the typing-indicator-demo.js shows an example of how to use them.
+These can be found in the `typing-indicator-demo/typing_indicators` folder, and the demo.js shows an example of how to use them.
 
 To run the Typing Indicator Demo, you need to edit your config.js file to have your app-id.
 

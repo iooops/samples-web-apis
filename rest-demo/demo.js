@@ -262,5 +262,9 @@
         var img = document.createElement("img");
         img.src = "data:image/png;base64," + base64img;
         document.body.appendChild(img);
+
+        var done = document.createElement("div");
+        done.innerHTML = "Test is Completed";
+        document.body.appendChild(done);
     });
 })();

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Typing Indicator Sample</title>
+
+
+  <script type="text/javascript" src="config.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <script>var layer = {}</script>
+  <script type="text/javascript" src="rest-library.js"></script>
+  <script type="text/javascript" src="typing-indicators/typing-publisher.js"></script>
+  <script type="text/javascript" src="typing-indicators/typing-indicator-listener.js"></script>
+  <script type="text/javascript" src="typing-indicators/typing-listener.js"></script>
+
+  <script type="text/javascript" src="typing-indicator.js"></script>
+
+  </head>
+
+<body>
+<h3>Part 1: Sending Indicators</h3>
+<input id='textbox' type='text' />
+<div id='sentLog'></div>
+
+<h3>Part 2: Receiving/Display Typing Indicators</h3>
+<div id='statusIndicator'></div>
+<div style='border: solid 1px #888; height: 400px; overflow: auto' id='receiveLog'></div>
+</body>
+</html>

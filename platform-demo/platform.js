@@ -11,27 +11,23 @@
 var request = require("request");
 var deferred = require('deferred');
 
-
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 // Setup your application's config data:
 var appConfig = {
-    appId: process.env.platform_api_app_id,
-    bearerToken: process.env.platform_api_bearer_token,
-    serverUrl: process.env.platform_api_url || "https://api.layer.com"
+    appId: process.env.LAYER_APP_UUID,
+    bearerToken: process.env.LAYER_PLATFORM_API_TOKEN,
+    serverUrl: process.env.LAYER_PLATFORM_API_URL || "https://api.layer.com"
 };
 
 if (!appConfig.appId) {
-    console.error("Please run \"setenv platform_api_app_id=your-uui-id\"");
+    console.error("Please set environmental variable LAYER_APP_UUID to match your Layer Application UUID.");
     return;
 }
 
 if (!appConfig.bearerToken) {
-    console.error("Please run \"setenv platform_api_bearer_token=your-token\"");
+    console.error("Please set environmental variable LAYER_PLATFORM_API_TOKEN to match your Platform API token.");
     return;
 }
 
-console.log(appConfig.appId);
 (function() {
     var participant = String(Math.random()).replace(/\./,"");
 
@@ -95,7 +91,7 @@ console.log(appConfig.appId);
 
 	   def.resolve({
 	       statusCode: response.statusCode,
-	       statusMessage: status, 
+	       statusMessage: status,
 	       conversation: status == "conflict" ? body.data : body
 	   });
 	});
@@ -174,7 +170,7 @@ console.log(appConfig.appId);
             headers: layersample.headers
         }, function(error, response, body) {
 	   def.resolve({
-	       statusCode: response.statusCode, 
+	       statusCode: response.statusCode,
 	       message: body
 	   });
 	});
@@ -191,7 +187,7 @@ console.log(appConfig.appId);
             headers: layersample.headers
         }, function(error, response, body) {
 	   def.resolve({
-	       statusCode: response.statusCode, 
+	       statusCode: response.statusCode,
 	       conversation: body
 	   });
 	});
@@ -218,8 +214,8 @@ console.log(appConfig.appId);
     })
     .then(function(result) {
         console.log("DISTINCT CONFLICT RESULT: " + result.statusMessage);
-	console.dir(result.conversation);
-	console.log("END DISTINCT CONFLICT");
+	      console.dir(result.conversation);
+	      console.log("END DISTINCT CONFLICT");
 
         return changeMetadata(layersample.cache.newConversation.url, {
             "title1.racecar.title": "Sample conversation",
@@ -229,7 +225,7 @@ console.log(appConfig.appId);
      .then(function(result) {
          if (result.statusCode == 204) {
              console.log("Metadata Changed");
-	     
+
              return createConversation([participant, "layer-tester1", "layer-tester2"], {
                  title1: {
                      racecar: {

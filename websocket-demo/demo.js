@@ -15,7 +15,7 @@
  * 6. Renders a log for each websocket event
  *
  * The script below will run, but to run it successfully, you will need to replace:
- * 1. window.appId with your appId
+ * 1. window.LAYER_APP_ID with your Application ID
  * 2. getIdentityToken() with a function that gets your identity token
  */
 (function() {
@@ -61,7 +61,7 @@
     function onMessage(evt) {
         var msg = JSON.parse(evt.data);
         var body = msg.body;
-	log("WEBSOCKET RECEIVED: " + JSON.stringify(msg, false, 4));
+	      log("WEBSOCKET RECEIVED: " + JSON.stringify(msg, false, 4));
         switch(msg.type) {
             case "change":
                 handleChange(body);

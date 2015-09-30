@@ -50,7 +50,7 @@ function getNonce() {
 function getIdentityToken(nonce, userId) {
     var d = new $.Deferred();
     $.ajax({
-        url: window.identityProvider +  "/identity_tokens",
+        url: "https://layer-identity-provider.herokuapp.com/identity_tokens",
         headers: {
             "X_LAYER_APP_ID": window.layer.sampledata.config.appId,
             "Content-type": "application/json",

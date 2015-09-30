@@ -1,12 +1,12 @@
 /*
  * The script demonstrates use rest-library.js functions.
  * To run it successfully, you will need to replace:
- * 1. window.appId with your appId
+ * 1. window.LAYER_APP_ID with your Application ID
  * 2. getIdentityToken() with a function that gets your identity token
  */
 (function() {
-    if (!window.appId) {
-        return alert("Please provide an App ID from your developer dashboard; this goes in config.js");
+    if (!window.LAYER_APP_ID) {
+        return alert("Please provide an Application ID from your developer dashboard; this goes in config.js");
     }
 
     if (!window.layer) window.layer = {};
@@ -17,7 +17,7 @@
     var sampledata = window.layer.sampledata = {
         config: {
             serverUrl: serverUrl,
-            appId: window.appId
+            appId: window.LAYER_APP_ID
         },
         headers: {
             Accept: "application/vnd.layer+json; version=1.0",

@@ -1,6 +1,6 @@
 # samples-web-apis
 
-Samples for learning the Web APIs.
+Samples for learning the Layer APIs.
 
 There are three demos:
 
@@ -10,13 +10,13 @@ There are three demos:
 
 to get started, execute the following commands:
 
-1. git clone git@github.com:layerhq/samples-web-apis.git
-2. cd samples-web-apis
-3. npm install   (it is sometimes necessary to prefix this with `sudo`)
+1. `git clone git@github.com:layerhq/samples-web-apis.git`
+2. `cd samples-web-apis`
+3. `npm install`
 
-To run the demos below, you should edit your `config.js` file to have  your `appId`.
+To run the demos below, you should edit your `config.js` file to have your `LAYER_APP_ID`.
 
-You should use the Application ID for the sample app generated for you in the Developer Dashboard; this is setup with an identity provider that the script will automatically access.
+You should use the Application ID for the sample app generated for you in the [Developer Dashboard](https://developer.layer.com); this is setup with an identity provider that the script will automatically access.
 
 ## The REST API Demo
 
@@ -56,14 +56,14 @@ Open typing-indicator-demo/index.html to run this test; you can test this in two
 
 ## The Platform API Demo
 
-The platform.js script is a ndoe script that reads from your environment variables to get its configuration.  Prior to running this sample you need to add the following environmental variables (unix example provided):
+The platform.js script is a Node.js script that reads from your environment variables to get its configuration.  Prior to running this sample you need to add the following environmental variables (unix example provided):
 
 ```
-> export platform_api_app_id=00000000-0000-0000-0000-000000000000
-> export platform_api_bearer_token=Your Token Here
+> export LAYER_APP_UUID=00000000-0000-0000-0000-000000000000
+> export LAYER_PLATFORM_API_TOKEN=<token>
 ```
 
-If you don't have a Platfrom API Bearer token, you can create one on the Developer Dashboard, in the **Keys** section.
+If you don't have a Platfrom API Bearer token, you can create one in the [Developer Dashboard](https://developer.layer.com), in the **Keys** section.
 
 Once everything is setup, you can run
 

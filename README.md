@@ -19,6 +19,9 @@ To get started, execute the following commands:
 1. `git clone git@github.com:layerhq/samples-web-apis.git`
 2. `cd samples-web-apis`
 3. `npm install`
+4. Run your local webserver OR run `npm install http-server -g`
+   followed by `sudo http-server -a localhost -p 8080`. Demo can NOT
+   be run from `file:///`; only `http://`.
 
 ## Configuration
 

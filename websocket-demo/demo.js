@@ -111,7 +111,7 @@
 
     layersample.onSessionStart = function(token) {
         var socket = new WebSocket( serverUrl + "/websocket?session_token=" + token,
-                                    "com.layer.notifications-1.0");
+                                    "layer-1.0");
         socket.addEventListener("message", onMessage);
     };
 

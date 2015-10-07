@@ -11,12 +11,9 @@
 
     if (!window.layer) window.layer = {};
 
-    if (!serverUrl) serverUrl = "https://api.layer.com";
-    var websocketUrl = serverUrl.replace(/^https/, "wss");
-
     var sampledata = window.layer.sampledata = {
         config: {
-            serverUrl: serverUrl,
+            serverUrl: "https://api.layer.com",
             appId: window.LAYER_APP_ID
         },
         headers: {
@@ -29,6 +26,8 @@
             receiveSocket: null
         }
     };
+
+    var websocketUrl = sampledata.config.serverUrl.replace(/^https/, "wss");
 
     // AUTHENTICATE
     getNonce()

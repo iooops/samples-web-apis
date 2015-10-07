@@ -5,6 +5,10 @@
  * 2. getIdentityToken() with a function that gets your identity token
  */
 (function() {
+    if (location.protocol == 'file:') {
+	return alert("This demo requires a webserver to run; see README.md for more information");
+    }
+
     if (!window.LAYER_APP_ID) {
         return alert("Please provide an Application ID from your developer dashboard; this goes in config.js");
     }

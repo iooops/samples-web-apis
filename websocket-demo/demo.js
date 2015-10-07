@@ -34,7 +34,7 @@
 
     // Cache of all objects received via the websocket
     var objectCache = {};
-
+    if (!layer.js) return alert("Please run npm install before running this demo");
     var parser = new layer.js.LayerPatchParser({
         getObjectCallback: function(id) {
             return objectCache[id]

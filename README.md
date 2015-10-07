@@ -5,7 +5,7 @@ Samples for learning the Layer APIs.
 There are three demos:
 
 1. The Client REST API
-2. The Websocket API
+2. The WebSocket API
 3. The Platform API
 
 ## Requirements
@@ -20,8 +20,9 @@ To get started, execute the following commands:
 2. `cd samples-web-apis`
 3. `npm install`
 4. Run your local webserver OR run `npm install http-server -g`
-   followed by `sudo http-server -a localhost -p 8080`. Demo can NOT
-   be run from `file:///`; only `http://`.
+   followed by `sudo http-server -a localhost -p 8080`.
+
+**Note**: These demos can NOT be run from `file:///`; only `http://`.
 
 ## Configuration
 
@@ -39,25 +40,25 @@ The `~/rest-demo/demo.js` file a script of calls for invoking those rest-library
 
 This demo is meant to be understood by running it with your debugger open and showing your network traffic.
 
-## The Websocket API Demo
+## The WebSocket API Demo
 
-To run the Websocket API Demo, you need to be able to run the REST API Demo.
+To run the WebSocket API Demo, you need to be able to run the REST API Demo.
 
-Simply load `websocket-demo/demo.html` to run the demo; the demo will run the REST API Demo and show all websocket events generated.  If you run this in chrome, you can see more details on the websocket events:
+Simply load `websocket-demo/demo.html` to run the demo; the demo will run the REST API Demo and show all WebSocket events generated.  If you run this in chrome, you can see more details on the WebSocket events:
 
-1. Open the Javascript debugger in chrome
+1. Open the JavaScript debugger in chrome
 2. Go to the Network tab
-3. Select the "Websocket" filter to filter the network requests listed
-4. Select the last websocket request shown in the network list
-5. Select the "frames" tab to see a list of all message frames sent through the websocket.
+3. Select the "WebSocket" filter to filter the network requests listed
+4. Select the last WebSocket request shown in the network list
+5. Select the "frames" tab to see a list of all message frames sent through the WebSocket.
 
 ## The Typing Indicator Demo
 
 The Typing Indicator Demo comes with some libraries you are welcome to reuse, initializing three classes:
 
-1. TypingPublisher: Sends websocket packets to the server indicating that typing is "started", "paused" or "finished"
+1. TypingPublisher: Sends WebSocket packets to the server indicating that typing is "started", "paused" or "finished"
 2. TypingListener: Monitors a textbox you provide, and tells the TypingPublisher what the current state is
-3. TypingIndicatorListener: Monitors the websocket for typing indicators from other users, and fires onChange events whenever a typing indicator updates its state
+3. TypingIndicatorListener: Monitors the WebSocket for typing indicators from other users, and fires onChange events whenever a typing indicator updates its state
 
 These can be found in the `typing-indicator-demo/typing_indicators` folder, and the demo.js shows an example of how to use them.
 

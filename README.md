@@ -44,7 +44,7 @@ This demo is meant to be understood by running it with your debugger open and sh
 
 To run the WebSocket API Demo, you need to be able to run the REST API Demo.
 
-Simply load `websocket-demo/demo.html` to run the demo; the demo will run the REST API Demo and show all WebSocket events generated.  If you run this in chrome, you can see more details on the WebSocket events:
+Simply load `websocket-demo/index.html` to run the demo; the demo will run the REST API Demo and show all WebSocket events generated.  If you run this in chrome, you can see more details on the WebSocket events:
 
 1. Open the JavaScript debugger in chrome
 2. Go to the Network tab
